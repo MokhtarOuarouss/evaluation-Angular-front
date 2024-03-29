@@ -1,0 +1,67 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 >List Participants</h3>
+  
+        <div id="header" >
+           <a type="submit"  (click)="openModal(modalTemplate)" class="btn btn-lg" id="deleteClick">
+            Ajouter Participant a cette formation <i class="bi bi-plus-square-fill fa-10x" ></i>
+          </a>
+          <ng-template  #modalTemplate let-modal>
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <form (submit)="addParticipantToFormation()">
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedParticipant" name="participant">
+                      <option *ngFor="let participant of AllParticipants" [ngValue]="participant" selected>
+                        {{ participant.name }}
+                      </option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            
+          </ng-template> 
+        </div>
+        
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">name</th>
+              <th scope="col">email</th>
+              <th scope="col">nombre des formations</th>
+              <th scope="col">Supprimer</th>
+              
+            </tr>
+          </thead>
+          <tbody *ngFor="let participant of participants ;let i = index ">
+            <!-- Iterate over formations using ngFor -->
+            <tr>
+              
+              <th scope="row">{{i+1}}</th>
+              <td>
+                <a >{{ participant.name }}</a>
+              </td>
+              <td>{{participant.email }}</td>
+              <td>{{participant.nbrFormations}}</td>
+              
+
+              <td>
+                <a type="submit" (click)="removeParticipantFromFormation(participant.id)"  class="btn btn-lg" id="deleteClick">
+                  <i class="bi bi-trash " ></i>
+                </a>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  

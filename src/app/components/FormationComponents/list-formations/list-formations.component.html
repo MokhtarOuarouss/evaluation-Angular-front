@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 >List Formations</h1>
+
+      <div id="header" >
+        <app-search-bar (searchTextChange)="searchText = $event"></app-search-bar>
+        <a type="submit"  [routerLink]="'/ajouter/formation'" class="btn btn-lg" id="deleteClick">
+         Ajouter Formation <i class="bi bi-plus-square-fill fa-10x" ></i>
+        </a>
+      </div>
+      
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">titre</th>
+            <th scope="col">Date Debut</th>
+            <th scope="col">Date Fin</th>
+            <th scope="col">Detail</th>
+            <th scope="col">Modifier</th>
+            <th scope="col">Supprimer</th>
+            
+          </tr>
+        </thead>
+        <tbody *ngFor="let formation of formations | formationFilter: searchText; let i = index">
+          <!-- Iterate over formations using ngFor -->
+          <tr>
+            
+            <th scope="row">{{i+1}}</th>
+            <td>
+              <a>{{ formation.titre }}</a>
+            </td>
+            <td>{{formation.dateDebut | date:'d/M/y'}}</td>
+            <td>{{formation.dateFin| date:'d/M/y'}}</td>
+            
+            <td>
+              <a type="submit"  [routerLink]="'/formation/' + formation.id" class="btn btn-lg" >
+                <i class="bi bi-paperclip" style="color: blue;"></i>
+              </a>
+            </td>
+
+            <td>
+              <a type="submit"  (click)="openModal(modalTemplate)" class="btn btn-lg" id="updateClick">
+                <i class="bi bi-box-arrow-up-left"></i>
+              </a>
+            </td>
+            <td>
+              <a type="submit"  (click)="deleteFormation(formation.id)" class="btn btn-lg" id="deleteClick">
+                <i class="bi bi-trash " ></i>
+              </a>
+            </td>
+          </tr>
+          <ng-template  #modalTemplate let-modal>
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+              <form (submit)="updateFormation(formation.id,formation)">
+                  <div class="mb-3">
+                      <label for="titre" class="form-label">Titre</label>
+                      <input type="text" class="form-control" id="titre" [(ngModel)]="formation.titre" name="titre" >
+                  </div>
+                  <div class="mb-3">
+                      <label for="description" class="form-label">Description</label>
+                      <input type="text" class="form-control" id="description" [(ngModel)]="formation.description" name="description"  required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="dateDebut" class="form-label">Date Début ({{formation.dateDebut | date:'dd/MM/y'}})</label>
+                      <input type="date" class="form-control" id="dateDebut" [(ngModel)]="formation.dateDebut" name="dateDebut" required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="dateFin" class="form-label">Date Fin ({{formation.dateFin | date:'dd/MM/y'}})</label>
+                      <input type="date" class="form-control" id="dateFin" [(ngModel)]="formation.dateFin" name="dateFin" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+            
+          </ng-template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

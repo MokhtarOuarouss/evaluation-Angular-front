@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="container-fluid">
+    <!-- Logo aligned to the left -->
+    <a class="navbar-brand" [routerLink]="'/'">
+      <img src="assets/images/{{imageName}}" alt="">
+    </a>
+
+    <!-- Toggle button for small screens -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation links aligned to the right -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="'/ajouter/formation'">Ajouter Formation</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="'/ajouter/participant'">Ajouter Participant</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/'">List des Formations</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,11 @@
+h1{
+    align-items: center;
+}
+
+form{
+    width: 50%;
+    margin: 0 25%;
+}
+form div {
+    width: 70%;
+}

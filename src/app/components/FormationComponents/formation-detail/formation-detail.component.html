@@ -1,0 +1,12 @@
+<div class="card" >
+    <div class="card-body">
+      <h3 class="card-title">{{ formation?.titre }}</h3>
+      <p class="card-text">Description : {{ formation?.description }}</p>
+     
+      <p class="card-text">Start Date: {{ formation?.dateDebut  | date:'d/M/y' }}</p> 
+       <p class="card-text">End Date: {{ formation?.dateFin |date:'d/M/y' }}</p>
+    </div>
+  </div>
+
+  <app-list-participants [participants]="participants" [formationId]="formation?.id || null"></app-list-participants>
+  

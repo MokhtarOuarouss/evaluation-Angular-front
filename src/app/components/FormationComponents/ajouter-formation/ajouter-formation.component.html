@@ -1,0 +1,31 @@
+
+
+<form class="needs-validation" (ngSubmit)="onSubmit()"  >
+    <h1 class="mb-3">ajouter Formation</h1>
+    <div *ngIf="DateProblemMessage" class="alert alert-danger mb-3" role="alert">
+        {{ DateProblemMessage }}
+    </div>
+    <div class="mb-3">
+        <label for="titre" class="form-label">Titre</label>
+        <input type="text" class="form-control" id="titre" [(ngModel)]="titre" name="titre" required>
+        <div class="invalid-feedback">
+            Please choose a username.
+          </div>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="description" [(ngModel)]="description" name="description" required>
+    </div>
+    <div class="mb-3">
+        <label for="dateDebut" class="form-label">Date Début</label>
+        <input type="date" class="form-control" id="dateDebut" [(ngModel)]="dateDebut" name="dateDebut" required>
+    </div>
+    <div class="mb-3">
+        <label for="dateFin" class="form-label">Date Fin</label>
+        <input type="date" class="form-control" id="dateFin" [(ngModel)]="dateFin" name="dateFin" required>
+    </div>
+    <div class="alert alert-danger" *ngIf="(!dateDebut || !dateFin || !titre || !description) && submitted">
+        Tous les champs doivent être remplis.
+      </div>
+    <button type="submit" class="btn btn-primary" >Submit</button>
+</form>

@@ -1,0 +1,21 @@
+
+
+<form class="needs-validation" (ngSubmit)="onSubmit()"  >
+    <h1 class="mb-3">ajouter participant</h1>
+    <!-- <div *ngIf="DateProblemMessage" class="alert alert-danger mb-3" role="alert">
+        {{ DateProblemMessage }}
+    </div> -->
+    <div class="mb-3">
+        <label for="titre" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="titre" [(ngModel)]="name" name="name" required>
+        
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">email</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" required>
+    </div>
+    <div class="alert alert-danger" *ngIf="(!name || !email) && submitted">
+        Tous les champs doivent être remplis.
+    </div>
+    <button type="submit" class="btn btn-primary" >Submit</button>
+</form>

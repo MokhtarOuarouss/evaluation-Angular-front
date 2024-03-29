@@ -1,0 +1,35 @@
+#deleteClick {
+    color: red;
+}
+
+#updateClick {
+    color: green;
+}
+
+h1{
+    text-align: center;
+}
+
+td a {
+    color: black;
+    text-decoration: none;
+    
+    transition: 0.4s ease-in-out;
+    
+}
+
+td a:hover {
+    color:  rgb(8, 92, 218);
+    font-weight: bold;    
+}
+
+#header {
+    display: flex;
+    align-items: center;
+
+}
+
+#header a {
+    color: rgb(8, 92, 218);
+    margin-left: auto; 
+}
